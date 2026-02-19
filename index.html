@@ -125,23 +125,22 @@
 		</div>
 
 		<script type="text/javascript">
-			window.onload = () => {
+			window.onload = () =>{
 				const audio = document.getElementById("reproductor");
-				const play = document.getElementById("play")
-				const pause = document.getElementById("pause")
+				const play = document.getElementById("play");
+				const pause = document.getElementById("pause");
 
 				play.onclick = playAudio;
 				pause.onclick = pauseAudio;
-				
-				function playAudio()
-				{
+
+				function playAudio(){
 					audio.play();
 				}
-				function pauseAudio()
-				{
+				function pauseAudio(){
 					audio.pause();
 				}
 			}
+
 		</script>
 
 	</main>
