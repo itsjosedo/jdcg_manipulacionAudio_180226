@@ -68,6 +68,7 @@
 		</div>
 	</nav>
 	<main>
+		<!--<div>
 		<div>
 			<h1>Manipulacion de audio (&lt;audio&gt;)</h1>
 			<div>
@@ -78,7 +79,7 @@
 			</div>
 		</div>
 
-		<!--<div>
+		
 			<span>Etiqueta de audio unicamente con source y type</span>
 			<audio id="ejemplo2" src="media/sounds/01GroundTheme.mp3" type="audio/mp3">
 				No es soportada la etiqueta audio
@@ -115,7 +116,9 @@
 			</audio>
 		</div>-->
 
+		<!--
 		<div>
+			
 			<h1>Reprodcutor de Jose Douglas Calles</h1>
 			<audio id="reproductor">
 				<source src="media/sounds/01GroundTheme.mp3" type="audio/mpeg">
@@ -123,8 +126,53 @@
 			<button type="button" id="play" class="btn btn-primary">Reproducir</button>
 			<button type="button" id="pause" class="btn btn-primary">Pausar</button>
 		</div>
-
+			-->
+		
+		<div id="drumSet">
+			<button type="button" id="KeyW" class="btn btn-secondary">Tambor1</button>
+			<button type="button" id="KeyA" class="btn btn-secondary">Tambor2</button>
+			<button type="button" id="KeyS" class="btn btn-secondary">Tambor3</button>
+			<button type="button" id="KeyD" class="btn btn-secondary">Tambor4</button>
+			<button type="button" id="KeyJ" class="btn btn-secondary">TamborSnare</button>
+			<button type="button" id="KeyK" class="btn btn-secondary">Crash</button>
+			<button type="button" id="KeyL" class="btn btn-secondary">Kick Bass</button>
+		</div>
 		<script type="text/javascript">
+
+			const sounds = {
+				'KeyW':'https://www.virtualdruming.com/drums/virtual-drum-sounds/hip-hop/tom1.ogg',
+				'KeyA':'https://www.virtualdruming.com/drums/virtual-drum-sounds/hip-hop/tom2.ogg',
+				'KeyS':'https://www.virtualdruming.com/drums/virtual-drum-sounds/hip-hop/tom3.ogg',
+				'KeyD':'https://www.virtualdruming.com/drums/virtual-drum-sounds/hip-hop/pad1.ogg',
+				'KeyJ':'https://www.virtualdruming.com/drums/virtual-drum-sounds/hip-hop/snare1.ogg',
+				'KeyK':'https://freesound.org/data/previews/263/263132_2064400-lq.mp3',
+				'KeyL':'https://www.virtualdruming.com/drums/virtual-drum-sounds/hip-hop/kit.ogg'
+			} 
+
+			
+
+			
+
+			//Ejecucuion de sonido a paritr del evento KEYPRESS
+			window.addEventListener('keypress', function(e){
+				console.log(e.code)
+				if(sounds[e.code]){
+					console.log("Presionando la tecla: ", e.code);
+					document.getElementById(e.code).click();
+				}
+			});
+
+			document.getElementById('drumSet').addEventListener('click', function(e){
+				const tgt = e.target.closest('button');
+				if(tgt) play(sounds[tgt.id]);
+			});
+
+			const play = sound => {
+				console.log("Sonando: ", sound);
+				var audio = new Audio(sound);
+				audio.play();
+			}
+			/*
 			window.onload = () =>{
 				const audio = document.getElementById("reproductor");
 				const play = document.getElementById("play");
@@ -140,6 +188,7 @@
 					audio.pause();
 				}
 			}
+				*/
 
 		</script>
 
